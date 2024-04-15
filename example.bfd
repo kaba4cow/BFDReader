@@ -1,0 +1,53 @@
+object PropertyData {
+	string name;
+	string value;
+}
+
+format PackageData {
+	object EntryData {
+		string name;
+		u_byte type;
+		u_int size;
+		u_byte[size] data;
+	}
+	u_int entryCount;
+	EntryData[entryCount] entries;
+}
+
+format GraphData {
+	object PointData {
+		double x;
+		float2 y;
+	}
+	u_int pointCount;
+	PointData[pointCount] points;
+}
+
+format ModelData {
+	object VertexData {
+		u_short position;
+		u_short texture;
+		u_byte normal;
+		u_short color;
+	}
+	object ColorData {
+		u_byte red;
+		u_byte green;
+		u_byte blue;
+	}
+	
+	u_short positionCount;
+	float2[positionCount] position;
+	
+	u_short textureCount;
+	float2[textureCount] textures;
+	
+	u_byte hasColors;
+	if (hasColors != 0) {
+		u_short colorCount;
+		ColorData[colorCount] colors;
+	}
+	
+	u_short vertexCount;
+	VertexData[vertexCount] vertices;
+}
