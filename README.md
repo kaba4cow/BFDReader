@@ -1,8 +1,6 @@
 # Binary Format Definition Reader
 
-A code generator class that reads a file written in Binary Format Definition language and generates Java classes which can then be used to read files in the binary formats defined in the file.
-
-A format definition file may contain multiple formats and objects. Objects can be defined in other objects, but a format cannot be defined inside any other block. The generated format constructors are **public** and the object constructors are **private**. All generated fields are **public final**, object fields are read by invoking the constructors of their generated classes and primitive fields and **Strings** are read from BinaryReader passed to every format and object constructor.
+A code generator utility that can read files written in Binary Format Definition language and produce Java classes which can then be used to read files in the binary formats defined in the file.
 
 ### Usage
 
@@ -15,10 +13,12 @@ A simple example of using the BFDReader is shown in the **kaba4cow.example.Examp
 ### Files
 
  - **example.bfd** is a Binary Format Definition script used in the **kaba4cow.example.Example** class.
- - **Formats.java** is a class containing the formats generated from the original **example.bfd** script.
+ - **Formats.java** is a class generated from the original **example.bfd** script.
  - **bfd4npp.xml** is a Notepad++ language definition file for Binary Format Definition language. 
 
 ## Binary Format Definition Language
+
+A format definition file may contain multiple formats and objects. Objects can be defined in other objects, but a format cannot be defined inside any other block. The generated format constructors are **public** and the object constructors are **private**. All generated fields are **public final**, object fields are read by invoking the constructors of their generated classes and primitive fields and **Strings** are read from BinaryReader passed to every format and object constructor.
 
 The syntax for defining a binary format is as follows:
 
@@ -88,7 +88,6 @@ The language supports conditions which are also read as expressions and get gene
 			short primitive_field;
 			string string_field;
 			ObjectName object_field;
-		}
 		}
 	}
 
